@@ -8,7 +8,6 @@ reg rst_n;
 reg signed [31:0] x;
 reg signed [31:0] y;
 reg start;
-reg start1;
 wire signed [31:0] 	angle;
 wire signed [31:0] anglef;
 initial begin
@@ -16,14 +15,12 @@ initial begin
 	rst_n = 0;
 	x = 'b0;
 	y = 'b0;
-	start1 = 0;
 	start = 0;
 	#100 rst_n = 1;
 
 	#10 @(posedge clk) start = 1;
 	#10 @(posedge clk) 				x = -9'd6 ; 		y = -9'd8 ;
-	#10 @(posedge clk) 	     start1 = 1;
-	#100000 $stop;	
+	#1000 $stop;	
 end
 
 always #(PERIOD/2) clk = ~clk;
@@ -34,7 +31,6 @@ cordic_B inst1(
 		.x(x),
 		.y(y),
 		.start(start),
-		.start1(start1),
 		.angle(angle),
 		.anglef(anglef)
 
