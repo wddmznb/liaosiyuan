@@ -128,7 +128,7 @@ always@(posedge clk or negedge rst_n)begin//第一次迭代
 		y1 <= 'b0;
 		z1 <= 'b0;
 	end
-	else if(!y0[31]) begin					//和A不同的是，每次判断y坐标的正负，从而决定是顺时针还是逆时针旋转。
+	else if(!y0[31]) begin					
 		x1 <= x0 + y0;
 		y1 <= y0 - x0;
 		z1 <= z0 + angle_0;
